@@ -5,8 +5,7 @@
             <p>
                 <mat-form-field appearance="outline" color="primary" floatLabel="always">
                     <mat-label>Nome</mat-label>
-                    <input matInput placeholder="Inserisci nome" type="text" name="nome" formControlName="nome"
-                        [readonly]="!disable()">
+                    <input matInput placeholder="Inserisci nome" type="text" name="nome" formControlName="nome">
                     <mat-error *ngIf="userReactive.get('nome')?.hasError('required')">Nome obbligatorio</mat-error>
                     <mat-error *ngIf="userReactive.get('nome')?.hasError('minlength')">Minimo 4 caratteri</mat-error>
                 </mat-form-field>
@@ -15,7 +14,7 @@
                 <mat-form-field appearance="outline" color="primary" floatLabel="always">
                     <mat-label>Cognome</mat-label>
                     <input matInput placeholder="Inserisci il cognome" type="text" name="cognome"
-                    formControlName="cognome" [readonly]="!disable()">
+                    formControlName="cognome">
                     <mat-error *ngIf="userReactive.get('cognome')?.hasError('required')">Cognome obbligatorio</mat-error>
                     <mat-error *ngIf="userReactive.get('cognome')?.hasError('minlength')">Minimo 4 caratteri</mat-error>
                 </mat-form-field>
@@ -25,7 +24,7 @@
                 <mat-form-field appearance="outline" color="primary" floatLabel="always">
                     <mat-label>Data di nascita</mat-label>
                     <input matInput placeholder="Inserisci la data di nascita" type="text" name="dataDiNascita"
-                    formControlName="dataDiNascita" [readonly]="!disable()">
+                    formControlName="dataDiNascita">
                     <mat-error *ngIf="userReactive.get('dataDiNascita')?.hasError('required')">Data di nascita obbligatoria</mat-error>
                 </mat-form-field>
             </p>
@@ -35,7 +34,7 @@
                     <mat-icon>arrow_back</mat-icon>
                 </button>
                 <button type="submit" name="submit" value="submit" id="submit" color="primary" mat-icon-button
-                    *ngIf="disable()" [disabled]="userReactive.invalid"><mat-icon>done</mat-icon></button>
+                    *ngIf="disable()"><mat-icon>done</mat-icon></button>
             </div>
 
         </form>

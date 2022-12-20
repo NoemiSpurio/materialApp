@@ -29,6 +29,8 @@ export class DetailUserComponent implements OnChanges, OnInit{
       this.idUser = parseInt(id!);
       this.user = {...this.userService.findById(this.idUser)}!;
       this.userReactive.patchValue(this.user);
+      if(this.router.url.includes('detail'))
+        this.userReactive.disable(); // lo posso fare anche particolareggiato con la get del parametro
     }
   }
 
