@@ -29,6 +29,18 @@
                 </mat-form-field>
             </p>
 
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Sesso</mat-label>
+                    <mat-select formControlName="sesso">
+                        <mat-option value="">Seleziona</mat-option>
+                      <mat-option *ngFor="let sesso of sessi" [value]="sesso">
+                        {{sesso}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </p>
+
             <div class="col-12">
                 <button mat-icon-button aria-label="Back" (click)="back()" color="primary">
                     <mat-icon>arrow_back</mat-icon>

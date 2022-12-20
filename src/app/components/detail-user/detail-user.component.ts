@@ -1,8 +1,16 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/services/user.service';
+
+export interface UserForm extends FormGroup <{
+  nome: FormControl<string>;
+  cognome: FormControl<string>;
+  id: FormControl<number>;
+  dataDiNascita: FormControl<string>;
+  sesso: FormControl<string>;
+}>{}
 
 @Component({
   selector: 'app-detail-user',
@@ -14,11 +22,17 @@ export class DetailUserComponent implements OnChanges, OnInit{
   idUser?: number;
   user: User = {};
 
-  userReactive: FormGroup = this.fb.group({
-    id: this.fb.control(''),
-    nome: this.fb.control('', [Validators.required, Validators.minLength(4)]),
-    cognome: this.fb.control('', [Validators.required, Validators.minLength(4)]),
-    dataDiNascita: this.fb.control('', [Validators.required])
+  sessi: string[] = [
+    'MASCHIO',
+    'FEMMINA'
+  ];
+
+  userReactive: UserForm = this.fb.group({
+    id: this.fb.nonNullable.control(0),
+    nome: this.fb.nonNullable.control('', [Validators.required, Validators.minLength(4)]),
+    cognome: this.fb.nonNullable.control('', [Validators.required, Validators.minLength(4)]),
+    dataDiNascita: this.fb.nonNullable.control('', [Validators.required]),
+    sesso: this.fb.nonNullable.control('', [Validators.required])
   });
 
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute, private fb: FormBuilder){}
